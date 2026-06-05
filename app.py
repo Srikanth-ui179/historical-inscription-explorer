@@ -77,6 +77,23 @@ def clear_selection() -> None:
     st.session_state["selected_inscription_id"] = None
 
 
+def init_filter_state() -> None:
+    """Ensure filter widget keys exist before widgets are drawn."""
+    if "search_input" not in st.session_state:
+        st.session_state["search_input"] = ""
+    if "dynasty_filter" not in st.session_state:
+        st.session_state["dynasty_filter"] = []
+    if "century_filter" not in st.session_state:
+        st.session_state["century_filter"] = []
+
+
+def clear_filters() -> None:
+    """Reset sidebar filters. Invoked via on_click before widgets are instantiated."""
+    st.session_state["search_input"] = ""
+    st.session_state["dynasty_filter"] = []
+    st.session_state["century_filter"] = []
+
+
 def shorten_dynasty_for_axis(dynasty: str) -> str:
     """Return a compact dynasty label for the timeline Y-axis."""
     return DYNASTY_AXIS_LABELS.get(dynasty, dynasty)
@@ -487,6 +504,8 @@ def main() -> None:
     if df.empty:
         st.stop()
 
+    init_filter_state()
+
     with st.sidebar:
         st.markdown("## Explore")
         st.caption("Search and filter South Indian epigraphic records")
@@ -520,11 +539,12 @@ def main() -> None:
         ]
 
         st.divider()
-        if st.button("Clear all filters", use_container_width=True):
-            st.session_state["search_input"] = ""
-            st.session_state["dynasty_filter"] = []
-            st.session_state["century_filter"] = []
-            st.rerun()
+        st.button(
+            "Clear all filters",
+            use_container_width=True,
+            on_click=clear_filters,
+            key="clear_filters_button",
+        )
 
     filtered = apply_filters(df, search, selected_dynasties, selected_centuries)
     selected_id = st.session_state.get("selected_inscription_id")
