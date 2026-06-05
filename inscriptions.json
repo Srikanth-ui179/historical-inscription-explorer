@@ -9,6 +9,7 @@
     "location": "Mangulam (Mankulam), Madurai district, Tamil Nadu",
     "language": "Tamil",
     "script": "Tamil-Brahmi",
+    "historical_significance": "Earliest epigraphic attestation of a Pandya king and among the oldest Tamil-Brahmi records, bridging Sangam literature with archaeology.",
     "description": "The longest Mangulam (Ovamalai) record: Pandya king Nedunjeliyan I (Neduncheliyan) grants a monastery to the senior Jain monk Nanta-siri Kuvan. Among the earliest Tamil-Brahmi texts; preserves early use of the letter ழ."
   },
   {
@@ -21,6 +22,7 @@
     "location": "Mangulam (Mankulam), Madurai district, Tamil Nadu",
     "language": "Tamil",
     "script": "Tamil-Brahmi",
+    "historical_significance": "Documents Jain patronage by officials of the early Pandya court, illustrating how rock-cut monasteries were endowed in the pre-Christian Tamil country.",
     "description": "Records that Katalan Valuti, an official (panan) of Nedunjeliyan, caused a rock-cut bed to be made for the Jain monk Nanta-siri Kuvan. Part of the six Tamil-Brahmi inscriptions on Kalinjamalai near Mangulam village."
   },
   {
@@ -33,6 +35,7 @@
     "location": "Mangulam (Mankulam), Madurai district, Tamil Nadu",
     "language": "Tamil",
     "script": "Tamil-Brahmi",
+    "historical_significance": "Shows merchant guilds (nagarattu) participating in religious endowments alongside royal patrons in early South India.",
     "description": "Mentions Antai Asutan, superintendent of pearls and kavidi of the merchant guild of Velarai (Vellarai/Vellarippatti), who donated a drip-ledge to Nanta-siri Kuvan. Shows Jain patronage by traders linked to the early Pandyas."
   },
   {
@@ -45,6 +48,7 @@
     "location": "Jambai, Tirukkoyilur taluk, Viluppuram district, Tamil Nadu",
     "language": "Tamil",
     "script": "Tamil-Brahmi",
+    "historical_significance": "Conclusively identifies Emperor Ashoka's Satyaputras with the Athiyaman chieftains, a landmark in South Indian historiography.",
     "description": "Reads: Satiyaputo Atiyan Netuman Anci itta Pali — 'the abode was given by Atiyan Neduman Anji, the Satyaputra.' Identifies Ashoka's Satiyaputras with the Athiyaman chieftains of Tagadur (Dharmapuri); the donor appears in Sangam anthologies."
   },
   {
@@ -57,6 +61,7 @@
     "location": "Arunattarmalai, Velayuthampalayam (Pugalur), near Karur, Tamil Nadu",
     "language": "Tamil",
     "script": "Tamil-Brahmi",
+    "historical_significance": "Provides a three-generation Chera genealogy in stone, linking Sangam-era Chera rulers to the archaeological record near ancient Karur (Vanji).",
     "description": "Records three generations of Chera rulers — Athan Cheral Irumporai, Perum Kadungon, and Kadungon Ilam Kadungo — and the cutting of a rock shelter for the Jain monk Chenkayapan at the prince's investiture. Key epigraphic link between Sangam Cheras and archaeology."
   },
   {
@@ -69,6 +74,7 @@
     "location": "Arittapatti, Melur taluk, Madurai district, Tamil Nadu",
     "language": "Tamil",
     "script": "Tamil-Brahmi",
+    "historical_significance": "Representative early Jain cave-bed donation in the Madurai region, with script comparable to the Mangulam corpus.",
     "description": "Jain cave-bed donation by Imayavan, son of Ilam Perathan of Ilanchi, and by Adhinan Veliyan of Nelveli. Representative Tamil-Brahmi cave epigraphy of the early historic period, with orthography comparable to Mangulam."
   },
   {
@@ -81,6 +87,7 @@
     "location": "Rockfort hill, Tiruchirapalli, Tamil Nadu",
     "language": "Tamil",
     "script": "Tamil-Brahmi",
+    "historical_significance": "Part of the widespread Tamil-Brahmi cave corpus documenting Jain monastic sites before the classical Sangam period.",
     "description": "Early Jain cave inscription on the Tiruchirapalli rock, among the corpus of Tamil-Brahmi cave records that document monastic residences (pali) and stone beds in natural caverns before the Sangam classical age."
   },
   {
@@ -93,6 +100,7 @@
     "location": "Velvikudi (near Srivilliputtur), Tamil Nadu",
     "language": "Sanskrit and Tamil",
     "script": "Grantha and Tamil",
+    "historical_significance": "Key Pandya record of post-Kalabhra restoration and one of the earliest documented brahmadeya land grants in the Tamil region.",
     "description": "Bilingual copper-plate sasana of Pandya king Nedunjadaiyan Varaguna-varman I (Jatila Parantaka). Restores the brahmadeya village Velvikudi to Brahmana families after the Kalabhra interregnum; narrates Pandya revival and early medieval land grants."
   },
   {
@@ -105,6 +113,7 @@
     "location": "Nagapattinam, Tamil Nadu (plates preserved in Leiden)",
     "language": "Sanskrit and Tamil",
     "script": "Grantha and Tamil",
+    "historical_significance": "Documents Chola patronage of a Buddhist vihara founded by a Sailendra king, evidencing Nagapattinam's role in Indian Ocean trade networks.",
     "description": "Royal endowment of the Buddhist Chulamanivarmavihara at Nagapattinam by Sailendra king Chulamanivarman, confirmed under Chola patronage. Forms the core of the Leiden copper-plate corpus documenting Chola–Southeast Asian maritime relations."
   },
   {
@@ -117,6 +126,7 @@
     "location": "Nagapattinam, Tamil Nadu (Rijksmuseum volkenkunde, Leiden)",
     "language": "Sanskrit and Tamil",
     "script": "Grantha and Tamil",
+    "historical_significance": "Twenty-one copper plates that were for decades a primary authentic source for reconstructing early Chola political history.",
     "description": "Twenty-one large copper plates recording Rajendra Chola I's inscription of Rajaraja I's grant to the Nagapattinam vihara: five Sanskrit plates (eulogy and genealogy) and sixteen Tamil plates (village revenues, exemptions, and privileges to the Buddhist sangha)."
   },
   {
@@ -129,6 +139,7 @@
     "location": "Nagapattinam, Tamil Nadu (Rijksmuseum volkenkunde, Leiden)",
     "language": "Tamil",
     "script": "Tamil",
+    "historical_significance": "Records Kulottunga I's renewal of monastery revenues after turbulent decades of Chola intervention in Southeast Asia.",
     "description": "Three Tamil copper plates issued by Kulottunga Chola I, supplementing the Larger Leiden grant. Restores and clarifies revenue rights to the Nagapattinam monastery (Rajarajaperumpalli) after decades of Chola campaigns in the Malay world."
   },
   {
@@ -141,6 +152,7 @@
     "location": "Thiruvalangadu, Tiruvallur district, Tamil Nadu",
     "language": "Sanskrit and Tamil",
     "script": "Grantha and Tamil",
+    "historical_significance": "Contains the most extensive surviving Chola genealogical list, from mythical solar ancestors through Karikala to Rajendra Chola I.",
     "description": "Thirty-one plates granting Palaiyanur to the Thiruvalangadu Siva temple. The Sanskrit section preserves the legendary and historical Chola genealogy (from the solar line through Karikala to Rajendra); among the most important sources for early Chola history."
   },
   {
@@ -153,6 +165,7 @@
     "location": "Uttaramerur (Uthiramerur), Kanchipuram district, Tamil Nadu",
     "language": "Tamil",
     "script": "Tamil (medieval)",
+    "historical_significance": "Classic epigraphic constitution for medieval village self-government, including the kudavolai (pot-ticket) electoral procedure.",
     "description": "On the walls of the Vaikunda Perumal temple sabha-mandapa: prescribes election of village committees (variyams) from thirty wards by the kudavolai (pot-ticket) system, with qualifications, disqualifications, and duties — a classic record of medieval local self-governance."
   },
   {
@@ -165,6 +178,7 @@
     "location": "Uttaramerur (Uthiramerur), Kanchipuram district, Tamil Nadu",
     "language": "Tamil",
     "script": "Tamil (medieval)",
+    "historical_significance": "Amends the 919 CE Uttiramerur rules, showing how village administrative codes were revised in practice.",
     "description": "Companion inscription to the 919 CE Uttiramerur record, modifying rules for the annual, garden (totta), tank (eri), and other variyams of Uttaramerur Chaturvedimangalam to make committee administration more practical."
   },
   {
@@ -177,6 +191,7 @@
     "location": "Anuradhapura, Sri Lanka",
     "language": "Tamil",
     "script": "Tamil-Brahmi",
+    "historical_significance": "Rare pre-Christian evidence of a self-identified Tamil (Dameda) merchant and mariner community in ancient Sri Lanka.",
     "description": "Records a terrace (pasada) built for Tamil householders (Dameda-gahapati) by a Tamil monk (Dameda-samana); one seat was reserved for Karava the mariner (navika). Rare pre-Christian evidence of a Tamil merchant and mariner community in ancient Sri Lanka."
   },
   {
@@ -189,6 +204,7 @@
     "location": "Tirukonamalai (Koneswaram), Trincomalee, Sri Lanka",
     "language": "Tamil",
     "script": "Grantha and Tamil",
+    "historical_significance": "Links the Koneswaram shrine at Trincomalee to Chola imperial patronage and land endowments in Sri Lanka.",
     "description": "Nilaveli slab inscription in mixed Grantha and Tamil granting 250 veli of land to Maccesvaram at Tirukonamalai for the temple's daily expenses. The site also yields Pallava-period Grantha epigraphs (c. 7th century) and a later Rajaraja I prasasti, marking Koneswaram as a major Saiva centre in Sri Lanka."
   }
 ]
