@@ -10,21 +10,28 @@ import streamlit as st
 
 DATA_FILE = Path(__file__).parent / "inscriptions.json"
 
-# Short labels for the timeline Y-axis only; full names remain everywhere else.
+# Short labels for timeline display; full names remain in hovers, details, filters, and data.
 DYNASTY_AXIS_LABELS = {
     "Early Tamil community (Dameda)": "Dameda",
     "Local chieftaincy (Velir)": "Velir",
     "Athiyaman (Satyaputra)": "Athiyaman",
+    "Chera (Irumporai line)": "Chera",
+    "Early historic Tamil polities": "Tamil Polities",
+    "Pallava (Muttaraiyar period)": "Muttaraiyar",
+    "Early Pandya": "Pandya (Early)",
 }
 
 TIMELINE_HOVER_TEMPLATE = (
-    "<b>Title:</b> %{hovertext}<br>"
-    "<b>Dynasty:</b> %{customdata[0]}<br>"
-    "<b>Date:</b> %{customdata[1]}<br>"
-    "<b>Location:</b> %{customdata[2]}<br>"
-    "<b>Historical Significance:</b> %{customdata[3]}"
+    "<b>%{hovertext}</b><br>"
+    "Dynasty: %{customdata[0]}<br>"
+    "Date: %{customdata[1]}<br>"
+    "Location: %{customdata[2]}"
     "<extra></extra>"
 )
+
+TIMELINE_FOCUS_START = 800
+TIMELINE_FOCUS_END = 1200
+TIMELINE_FOCUS_SCALE = 1.55
 
 
 @st.cache_data
@@ -95,8 +102,25 @@ def clear_filters() -> None:
 
 
 def shorten_dynasty_for_axis(dynasty: str) -> str:
-    """Return a compact dynasty label for the timeline Y-axis."""
+    """Return a compact dynasty label for timeline-only display."""
     return DYNASTY_AXIS_LABELS.get(dynasty, dynasty)
+
+
+def timeline_x_position(year: int | float) -> float:
+    """Stretch the dense 800-1200 CE band while preserving CE tick labels."""
+    if year <= TIMELINE_FOCUS_START:
+        return float(year)
+    if year <= TIMELINE_FOCUS_END:
+        return TIMELINE_FOCUS_START + (float(year) - TIMELINE_FOCUS_START) * TIMELINE_FOCUS_SCALE
+    focus_width = (TIMELINE_FOCUS_END - TIMELINE_FOCUS_START) * TIMELINE_FOCUS_SCALE
+    return TIMELINE_FOCUS_START + focus_width + (float(year) - TIMELINE_FOCUS_END)
+
+
+def timeline_axis_ticks(min_year: int, max_year: int) -> tuple[list[float], list[str]]:
+    start = (min_year // 100) * 100
+    end = ((max_year + 99) // 100) * 100
+    years = list(range(start, end + 1, 100))
+    return [timeline_x_position(year) for year in years], [str(year) for year in years]
 
 
 def render_timeline(df: pd.DataFrame) -> None:
@@ -107,38 +131,44 @@ def render_timeline(df: pd.DataFrame) -> None:
 
     timeline_df = df.copy()
     timeline_df["dynasty_axis"] = timeline_df["dynasty"].map(shorten_dynasty_for_axis)
-    timeline_df["significance_hover"] = timeline_df.apply(get_significance, axis=1)
+    timeline_df["timeline_x"] = timeline_df["year"].map(timeline_x_position)
 
     dynasty_count = timeline_df["dynasty_axis"].nunique()
-    chart_height = max(540, min(820, dynasty_count * 24 + 100))
+    chart_height = max(620, min(900, dynasty_count * 34 + 180))
+    tickvals, ticktext = timeline_axis_ticks(int(timeline_df["year"].min()), int(timeline_df["year"].max()))
 
     fig = px.scatter(
         timeline_df,
-        x="year",
+        x="timeline_x",
         y="dynasty_axis",
         color="dynasty",
         hover_name="title",
-        custom_data=["dynasty", "date", "location", "significance_hover", "id"],
-        labels={"year": "Year (CE)", "dynasty_axis": "Dynasty"},
+        custom_data=["dynasty", "date", "location", "id"],
+        labels={"timeline_x": "Year (CE)", "dynasty_axis": "Dynasty"},
     )
     fig.update_traces(
         hovertemplate=TIMELINE_HOVER_TEMPLATE,
-        marker=dict(size=10, opacity=0.92, line=dict(width=0.6, color="rgba(240, 230, 210, 0.85)")),
+        marker=dict(size=14, opacity=0.92, line=dict(width=1, color="rgba(240, 230, 210, 0.9)")),
         selector=dict(mode="markers"),
     )
+    fig.for_each_trace(lambda trace: trace.update(name=shorten_dynasty_for_axis(trace.name)))
     fig.update_layout(
         height=chart_height,
-        margin=dict(l=44, r=4, t=0, b=32),
+        margin=dict(l=56, r=16, t=8, b=116),
+        legend_title_text="Dynasty<br>",
         legend=dict(
-            orientation="v",
+            orientation="h",
             yanchor="top",
-            y=1,
-            xanchor="left",
-            x=1.01,
-            font=dict(size=9, color="#c5d0db"),
-            title_font=dict(color="#8b98a8"),
+            y=-0.2,
+            xanchor="center",
+            x=0.5,
+            font=dict(size=10, color="#c5d0db"),
+            title_font=dict(size=11, color="#8b98a8"),
             itemsizing="constant",
-            tracegroupgap=2,
+            tracegroupgap=14,
+            entrywidth=145,
+            entrywidthmode="pixels",
+            itemwidth=34,
             bgcolor="rgba(0,0,0,0)",
         ),
         plot_bgcolor="rgba(0,0,0,0)",
@@ -147,12 +177,14 @@ def render_timeline(df: pd.DataFrame) -> None:
         xaxis_title="Year (CE)",
         yaxis_title="",
         hoverlabel=dict(
-            bgcolor="rgba(22, 32, 45, 0.97)",
+            bgcolor="rgba(22, 32, 45, 0.95)",
             bordercolor="rgba(212, 175, 55, 0.35)",
-            font=dict(family="Segoe UI, system-ui, sans-serif", size=12, color="#e8dcc4"),
+            font=dict(family="Segoe UI, system-ui, sans-serif", size=11, color="#e8dcc4"),
             align="left",
         ),
         hovermode="closest",
+        hoverdistance=30,
+        spikedistance=-1,
     )
     fig.update_xaxes(
         showgrid=True,
@@ -162,6 +194,10 @@ def render_timeline(df: pd.DataFrame) -> None:
         title_standoff=2,
         tickfont=dict(size=10, color="#9ca8b8"),
         title_font=dict(color="#8b98a8", size=11),
+        range=[timeline_df["timeline_x"].min() - 90, timeline_df["timeline_x"].max() + 90],
+        tickmode="array",
+        tickvals=tickvals,
+        ticktext=ticktext,
     )
     fig.update_yaxes(
         showgrid=False,
@@ -182,8 +218,8 @@ def render_timeline(df: pd.DataFrame) -> None:
     if event and event.selection and event.selection.points:
         point = event.selection.points[0]
         custom = point.get("customdata")
-        if custom and len(custom) >= 5:
-            select_inscription(int(custom[4]))
+        if custom and len(custom) >= 4:
+            select_inscription(int(custom[3]))
             st.rerun()
 
 
@@ -466,12 +502,31 @@ def inject_styles() -> None:
         }
 
         .timeline-tab div[data-testid="stPlotlyChart"] {
-            margin-top: -0.5rem;
-            margin-bottom: -1rem;
+            margin-top: -0.15rem;
+            margin-bottom: -0.35rem;
+            width: 100%;
         }
 
         .timeline-tab .js-plotly-plot .plotly {
             margin-bottom: 0 !important;
+            width: 100% !important;
+        }
+
+        .block-container,
+        section.main > div[data-testid="stMainBlockContainer"] {
+            max-width: none !important;
+            padding-left: clamp(1rem, 2vw, 2rem);
+            padding-right: clamp(1rem, 2vw, 2rem);
+        }
+
+        @media (max-width: 720px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .timeline-tab div[data-testid="stPlotlyChart"] {
+                overflow-x: auto;
+            }
         }
 
         [data-testid="stTabs"] [data-testid="stVerticalBlock"] {
@@ -592,7 +647,6 @@ def main() -> None:
 
     with tab_timeline:
         st.markdown('<div class="timeline-tab">', unsafe_allow_html=True)
-        st.caption("Hover for details · click a point to open its record")
         render_timeline(filtered)
         st.markdown("</div>", unsafe_allow_html=True)
 
